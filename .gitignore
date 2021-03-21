@@ -9,7 +9,8 @@
 # production
 /build
 /built-lambda
-
+.env
+.env.development
 /.netlify
 src/credentials.js
 # misc

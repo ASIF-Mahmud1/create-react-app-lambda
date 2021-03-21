@@ -36,7 +36,7 @@ class LambdaDemo extends Component {
         <button onClick={this.handleClick("async-dadjoke")}>{loading ? "Loading..." : "Call Async Lambda"}</button>
         <br />
         <button onClick={()=>{this.handlePrediction()}}>Test This</button>
-        <small>You are running this application in <b>{process.env.NODE_ENV}</b> mode.</small>
+        <small>You are running this application in <b>{process.env.REACT_APP_IBM_ApiKey}</b> mode.</small>
         <span>{msg}</span>
       </p>
     )
