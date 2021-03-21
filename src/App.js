@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import logo from "./logo.svg"
 import "./App.css"
 import {getIBMToken } from './utils/ibm-auth'
-import {predictEmailTag} from './utils/ibm-predict-api'
 
 class LambdaDemo extends Component {
   constructor(props) {
