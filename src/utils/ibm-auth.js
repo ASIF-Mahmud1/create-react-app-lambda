@@ -1,6 +1,7 @@
 
 
-import {IBM_ApiKey} from '../credentials'
+// import {IBM_ApiKey} from '../credentials'
+const { IBM_ApiKey } = process.env;
 const getIBMToken= async (apikey)=>{
 
     const api_key =IBM_ApiKey
