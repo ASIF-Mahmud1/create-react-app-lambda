@@ -4,10 +4,12 @@ const predictEmailTag = async (access_token)=>{
     try { 
         let response = await fetch(scoring_url, {
         method: 'POST',
+      
      
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
+            "Access-Control-Allow-Origin":"*",
             Authorization: `Bearer ${access_token}`,
             },
             body: JSON.stringify(scoring_payload),

@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import logo from "./logo.svg"
 import "./App.css"
 import {getIBMToken } from './utils/ibm-auth'
+import {predictEmailTag} from './utils/ibm-predict-api'
 
 class LambdaDemo extends Component {
   constructor(props) {
@@ -19,11 +20,11 @@ class LambdaDemo extends Component {
       .then(json => this.setState({ loading: false, msg: json.msg }))
   }
   handlePrediction= async()=>{
-    const access_token= await getIBMToken("d")
-    this.setState({access_token: access_token},()=>{
-      console.log("Token ", this.state.access_token)
-      alert(this.state.access_token)
-    })
+    const response= await getIBMToken("d")
+    console.log("Token  ", response)
+
+    const result= await predictEmailTag(response.access_token)
+    console.log("result ", result)
   }
 
   render() {
