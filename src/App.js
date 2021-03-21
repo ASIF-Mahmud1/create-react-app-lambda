@@ -1,12 +1,15 @@
 import React, { Component } from "react"
 import logo from "./logo.svg"
 import "./App.css"
+import {getIBMToken } from './utils/ibm-auth'
+import {predictEmailTag} from './utils/ibm-predict-api'
 
 class LambdaDemo extends Component {
   constructor(props) {
     super(props)
     this.state = { loading: false, msg: null }
   }
+
 
   handleClick = api => e => {
     e.preventDefault()
@@ -15,6 +18,13 @@ class LambdaDemo extends Component {
     fetch("/.netlify/functions/" + api)
       .then(response => response.json())
       .then(json => this.setState({ loading: false, msg: json.msg }))
+  }
+  handlePrediction= async()=>{
+    const access_token= await getIBMToken("d")
+    this.setState({access_token: access_token},()=>{
+      console.log("Token ", this.state.access_token)
+      alert(this.state.access_token)
+    })
   }
 
   render() {
@@ -25,7 +35,7 @@ class LambdaDemo extends Component {
         <button onClick={this.handleClick("hello")}>{loading ? "Loading..." : "Call Lambda"}</button>
         <button onClick={this.handleClick("async-dadjoke")}>{loading ? "Loading..." : "Call Async Lambda"}</button>
         <br />
-        <button onClick={()=>{alert("new button")}}>Test This</button>
+        <button onClick={()=>{this.handlePrediction()}}>Test This</button>
         <span>{msg}</span>
       </p>
     )
